@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="U  TF-8">
+    <title>JQuery Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        if (typeof jQuery == 'undefined'){
+            alert("kiss");
+        }else {
+            alert("kat");
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Lato Black";
+            font-size: larger;
+        }
+
+        input {
+            padding: 5px 5px 12px 5px;
+            font-size: 12px;
+            border-radius: 4px;
+            border: 1px solid gray;
+            width: 250px;
+
+        }
+
+        label {
+            position: relative;
+            top: 2px;
+            width: 150px;
+            float: left;
+
+        }
+
+        .form-element {
+            margin-bottom: 10px;
+        }
+
+        #submitButton {
+            width: 100px;
+            margin-left: 150px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="form-element">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="example@gmail.com"><br>
+</div>
+<div class="form-element">
+    <label for="phone">Telephone</label>
+    <input type="text" name="phone" id="phone" placeholder="0771234567">
+</div>
+<div class="form-element">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+</div>
+<div class="form-element">
+    <label for="passwordConfirm">Confirm password</label>
+    <input type="password" name="passwordConfirm" id="passwordConfirm">
+</div>
+<div class="form-element">
+    <input type="submit" id="submitButton" value="sign Up">
+</div>
+<script>
+    $(document).ready(function(){
+
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+
+        $("#submitButton").click(function () {
+            var errorMessge = "";
+            if (isEmail($("#email").val()) == false) {
+                errorMessge += " your email address in not valid";
+            }
+            alert(errorMessge);
+            if($.isNumeric($("#phone").val())==false){
+                errorMessge+="<p>Your number is not vaild</P>"
+            }
+
+        });
+
+    });
+
+</script>
+
+
+</body>
+</html>
